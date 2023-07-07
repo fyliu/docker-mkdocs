@@ -1,0 +1,11 @@
+docs
+scripts
+.git
+.gitignore
+.dockerignore
+Dockerfile
+docker-compose.yml
+pyproject.toml
+poetry.lock
+mkdocs.yml
+README.md

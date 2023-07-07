@@ -1,0 +1,80 @@
+site_name: Docker Mkdocs
+
+nav:
+  - Home: index.md
+  #- HfLA Website Docs: '!import https://github.com/hackforla/website-wiki?branch=main'
+  #- CivicTechJobs Docs: '!import https://github.com/hackforla/CivicTechJobs?branch=main&docs_dir=mkdocs&config=mkdocs/mkdocs.yml'
+  #- MkDocs: '!import https://github.com/mkdocs/mkdocs/?keep_docs_dir=False'
+  - Developer Guide: mkdocs/docs/dev-guide
+  - MkDocs:
+    #- Home: mkdocs/docs/index
+    - Getting Started: mkdocs/docs/getting-started
+    #- User Guide: mkdocs/docs/user-guide
+    - Developer Guide: mkdocs/docs/dev-guide
+    #- Developer Guide: mkdocs/docs/dev-guide
+    #- About:
+    #    - Release Notes: mkdocs/docs/about/release-notes
+    #    - Contributing: mkdocs/docs/about/contributing
+    #    - License: mkdocs/docs/about/license
+
+  #- MkDocs Material: '!import https://github.com/squidfunk/mkdocs-material?keep_docs_dir=False'
+  # - MkdocStrings: '!import https://github.com/mkdocstrings/mkdocstrings?keep_docs_dir=False&docs_dir=docs'
+  - mkdocs: mkdocs.md
+  - Developer:
+      - Guides ideas: guides-ideas.md
+      - Tools:
+          - git: git.md
+    #- MkDocs: [mkdocs/docs/index]
+
+theme:
+  name: material
+  features:
+    - content.action.edit
+    - content.code.annotate
+    - content.code.copy
+    - navigation.indexes
+    - navigation.sections
+
+repo_url: https://github.com/fyliu/docker-mkdocs
+repo_name: fyliu/docker-mkdocs
+edit_uri: edit/main/docs/
+
+plugins:
+  - search
+  - multirepo:
+      cleanup: false
+      keep_docs_dir: false
+      nav_repos:
+        - name: mkdocs
+          import_url: https://github.com/mkdocs/mkdocs/
+          imports: [mkdocs/docs/index.md]
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.betterem
+  - pymdownx.blocks.details
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - toc:
+      title: On this page
+      permalink: true
