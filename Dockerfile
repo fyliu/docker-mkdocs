@@ -12,6 +12,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # install dependencies
+#RUN pip install --no-cache-dir poetry==1.5.1
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
