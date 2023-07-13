@@ -19,11 +19,11 @@ nav:
 
   #- MkDocs Material: '!import https://github.com/squidfunk/mkdocs-material?keep_docs_dir=False'
   # - MkdocStrings: '!import https://github.com/mkdocstrings/mkdocstrings?keep_docs_dir=False&docs_dir=docs'
-  - mkdocs: mkdocs.md
-  - Developer:
-      - Guides ideas: guides-ideas.md
-      - Tools:
-          - git: git.md
+  - User Guide: usage.md
+  - Developer Guide: mkdocs.md
+  - Guides ideas: guides-ideas.md
+  - Tools:
+      - git: git.md
     #- MkDocs: [mkdocs/docs/index]
 
 theme:
