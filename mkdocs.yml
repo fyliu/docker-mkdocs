@@ -5,17 +5,17 @@ nav:
   #- HfLA Website Docs: '!import https://github.com/hackforla/website-wiki?branch=main'
   #- CivicTechJobs Docs: '!import https://github.com/hackforla/CivicTechJobs?branch=main&docs_dir=mkdocs&config=mkdocs/mkdocs.yml'
   #- MkDocs: '!import https://github.com/mkdocs/mkdocs/?keep_docs_dir=False'
-  - Developer Guide: mkdocs/docs/dev-guide
-  - MkDocs:
-    #- Home: mkdocs/docs/index
-    - Getting Started: mkdocs/docs/getting-started
-    #- User Guide: mkdocs/docs/user-guide
-    - Developer Guide: mkdocs/docs/dev-guide
-    #- Developer Guide: mkdocs/docs/dev-guide
-    #- About:
-    #    - Release Notes: mkdocs/docs/about/release-notes
-    #    - Contributing: mkdocs/docs/about/contributing
-    #    - License: mkdocs/docs/about/license
+  #  - Developer Guide: mkdocs/docs/dev-guide
+  #  - MkDocs:
+  #    #- Home: mkdocs/docs/index
+  #    - Getting Started: mkdocs/docs/getting-started
+  #    #- User Guide: mkdocs/docs/user-guide
+  #    - Developer Guide: mkdocs/docs/dev-guide
+  #    #- Developer Guide: mkdocs/docs/dev-guide
+  #    #- About:
+  #    #    - Release Notes: mkdocs/docs/about/release-notes
+  #    #    - Contributing: mkdocs/docs/about/contributing
+  #    #    - License: mkdocs/docs/about/license
 
   #- MkDocs Material: '!import https://github.com/squidfunk/mkdocs-material?keep_docs_dir=False'
   # - MkdocStrings: '!import https://github.com/mkdocstrings/mkdocstrings?keep_docs_dir=False&docs_dir=docs'
@@ -41,13 +41,13 @@ edit_uri: edit/main/docs/
 
 plugins:
   - search
-  - multirepo:
-      cleanup: false
-      keep_docs_dir: false
-      nav_repos:
-        - name: mkdocs
-          import_url: https://github.com/mkdocs/mkdocs/
-          imports: [mkdocs/docs/index.md]
+    #  - multirepo:
+    #      cleanup: false
+    #      keep_docs_dir: false
+    #      nav_repos:
+    #        - name: mkdocs
+    #          import_url: https://github.com/mkdocs/mkdocs/
+    #          imports: [mkdocs/docs/index.md]
 
 markdown_extensions:
   - abbr
