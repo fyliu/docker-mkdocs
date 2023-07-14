@@ -78,3 +78,7 @@ markdown_extensions:
   - toc:
       title: On this page
       permalink: true
+
+watch:
+  - README.md
+  - LICENSE
