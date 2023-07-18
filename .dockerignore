@@ -9,3 +9,7 @@ pyproject.toml
 poetry.lock
 mkdocs.yml
 README.md
+*.swp
+temp_dir
+LICENSE
+.github
