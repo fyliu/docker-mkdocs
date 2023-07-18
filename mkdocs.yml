@@ -21,6 +21,7 @@ nav:
   # - MkdocStrings: '!import https://github.com/mkdocstrings/mkdocstrings?keep_docs_dir=False&docs_dir=docs'
   - User Guide: usage.md
   - Developer Guide: mkdocs.md
+  - DockerHub Guide: dockerhub.md
   - Guides ideas: guides-ideas.md
   - Tools:
       - git: git.md

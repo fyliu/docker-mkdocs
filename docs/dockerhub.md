@@ -1,18 +1,68 @@
-# dockerhub
+# DockerHub
 
 ## getting started
 
-```
-https://docs.docker.com/docker-hub/quickstart/
-https://www.linux.com/training-tutorials/how-use-dockerhub/
-```
+??? note "References"
 
-I created a repo in my account called local-mkdocs
-The follow commands logs into dockerhub, tags the local image as testing, and pushes it to dockerhub
+    ```
+    https://docs.docker.com/docker-hub/quickstart/
+    https://www.linux.com/training-tutorials/how-use-dockerhub/
+    ```
 
-```
-docker login --username=fyliu
-docker images
-docker tag b6047b203915 fyliu/local-mkdocs:testing
-docker push fyliu/local-mkdocs:testing
-```
+    [todo: connect a repository to a package](https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package)
+
+??? note "old notes"
+
+    I created a repo in my account called local-mkdocs
+    The follow commands logs into dockerhub, tags the local image as testing, and pushes it to dockerhub
+
+    ``` bash
+    docker login --username=fyliu
+    docker images
+    docker tag b6047b203915 fyliu/local-mkdocs:testing
+    docker push fyliu/local-mkdocs:testing
+    ```
+
+## Create token
+
+Docker tokens can be passed in as docker passwords. The difference is passwords can be renewed while tokens remain in use. Tokens are created with different access levels and can be revoked individually for different clients. We need write access to be able to push images, but not the ability to delete them.
+
+
+1. Create New Access Token in DockerHub.
+
+    1. In the upper-right, click on your username > Account Settings list item > Security tab
+    1. Click the New Access Token button
+    1. For the Description, enter "docker-mkdocs action push"
+    1. For Permissions, choose "Read, Write"
+    1. Click the Generate button
+    1. Copy and save the token
+
+1. Test login with the token
+
+    ``` bash
+    docker login -u fyliu
+    Password: # pass in the token at the prompt
+    ...
+    Login succeeded
+    ```
+
+1. Test tag and push the image
+
+    ``` bash
+    docker images
+    docker tag b6047b203915 fyliu/mkdocs:testing # the hash is from the images list for the docker-mkdocs image in the local system
+    docker push fyliu/mkdocs:testing
+    ```
+
+## Create workflow
+
+??? note "References"
+
+    https://github.com/docker/login-action
+
+1. Create action secrets in github:
+
+    ``` bash
+    DOCKER_USERNAME
+    DOCKER_TOKEN
+    ```

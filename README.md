@@ -1,3 +1,27 @@
+# Docker MkDocs
+
+This repo contains the source code that builds the docker image used by Hack for LA developers to work on documentation. The image enables the deployment of a local MkDocs website to a single command.
+
+The image is hosted at [Hack for LA's repo](https://hub.docker.com/r/hackforlaops/mkdocs) on DockerHub. It contains MkDocs and plugins used by Hack for LA projects. We will update the plugins list and package versions as needed.
+
+- what's in this repo
+- what the docker image contains
+
+For full documentation, visit [https://hackforla.github.io/docker-mkdocs](https://hackforla.githu.io/docker-mkdocs).
+
+# Usage
+
+## Maintainers
+
+Maintainers can use the Dockerfile to build and update the image.
+This might be done to update package versions, or to add MkDocs plugins or system dependencies.
+
+## Projects
+
+Description of what projects need to do with this
+
+## Template below
+
 # Project title and description
 
 Include a project description that explains **what** your project is and **why** it exists. Aim for no more than 3-5 concise sentences. For example, you might say:
@@ -68,6 +92,4 @@ Include at least one way (or more, if possible) to reach your team with question
 
 ### Licensing
 
-Include details about the project's open source status.
-
-*this readme file sourced from [Jessica Sand](http://jessicasand.com/other-stuff/just-enough-docs/)*
+This code is made available under the [GNU General Public Licence v2.0](LICENSE)
