@@ -1,95 +1,42 @@
 # Docker MkDocs
 
-This repo contains the source code that builds the docker image used by Hack for LA developers to work on documentation. The image enables the deployment of a local MkDocs website to a single command.
+This repo contains the source code to build the docker image used by Hack for LA developers to work on MkDocs documentation. The image enables the deployment of a local MkDocs website with a single command.
 
 The image is hosted at [Hack for LA's repo](https://hub.docker.com/r/hackforlaops/mkdocs) on DockerHub. It contains MkDocs and plugins used by Hack for LA projects. We will update the plugins list and package versions as needed.
 
-- what's in this repo
-- what the docker image contains
+For full documentation, visit [https://hackforla.github.io/docker-mkdocs](https://hackforla.github.io/docker-mkdocs).
 
-For full documentation, visit [https://hackforla.github.io/docker-mkdocs](https://hackforla.githu.io/docker-mkdocs).
+## Project Context
 
-# Usage
+At Hack for LA, we have projects that utilize many different core technologies. We chose MkDocs which is a documentation site generator that works well with any of them. We provide this docker image as an option for projects so they won't have to go through the setup steps on their own.
 
-## Maintainers
+### For Projects
 
-Maintainers can use the Dockerfile to build and update the image.
-This might be done to update package versions, or to add MkDocs plugins or system dependencies.
+Projects can use the image by referencing it directly in a docker-compose.yml or the commandline. The recommended way is to create a docker-compose.yml file. See User Docs for instructions.
 
-## Projects
+Projects can extend the image to add MkDocs plugins and dependencies as required. See User Docs for instructions
 
-Description of what projects need to do with this
+When it's determined useful, projects can request that their plugin be incorporated into this image by doing a pull request from a fork.
 
-## Template below
+### For Maintainers
 
-# Project title and description
+Maintainers can update package versions, or add MkDocs plugins or system dependencies. See maintainer docs for details.
 
-Include a project description that explains **what** your project is and **why** it exists. Aim for no more than 3-5 concise sentences. For example, you might say:
+Maintainers can build an image and upload it to the docker hub repository for testing. Once the main branch is updated, the github workflow will build and push an image to docker hub. See maintainer docs for more details.
 
-{Project Name} is a project of Hack for LA. Hack for LA is a brigade of a Code for America that exists to {your mission}. {Project Name} helps {target users} accomplish {goal of project}. The {app/site/thing you're building}'s main features include {very brief feature descriptions}.
+## Technology used
 
-### Project context
+- [python](https://docs.python.org/3/)
+- [mkdocs](https://www.mkdocs.org/getting-started/)
+- [github actions](https://docs.docker.com/build/ci/github-actions/)
+- [docker hub](https://docs.docker.com/get-started/)
+- [docker](https://docs.docker.com)
+- [poetry](https://python-poetry.org/docs/)
 
-Civic projects often exist within a larger context that may include multiple stakeholders, historic relationships, associated research, or other details that are relevant but not *required* for direct contributions. Gathering these details in one place is useful, but the ReadMe isn't that place. Use this section to [link to a Google Doc](#) or other documentation repository where contributors can dig in if they so choose. This is also a good place to link to your Code of Conduct.
+## Contact info
 
-### Technology used
+Please post in the #engineering hackforla slack channel for any issues.
 
-- Each platform or framework should get its own bullet.
-- Each platform should include an [active link](#) to the official documentation.
-
-
-
-# How to contribute
-
-Explain the different ways people can contribute. For example:
-
-- Join the team {on Slack/at our weekly hack night/etc}.
-- To help with user research, {do ABC}.
-- To provide design support, {do XYZ}.
-- To contribute to the code, follow the instructions below.
-
-Remember to provide direct links to each channel.
-
-
-
-## Installation instructions
-
-1. Step-by-step instructions help new contributors get a development environment up and running quickly.
-2. You'll want to find the balance between being specific enough for novices to follow, without being so specific that you reinvent the wheel by providing overly-basic instructions that can be found elsewhere.
-3. Feel free to adapt this section and its sub-sections to your own processes.
-4. Alternatively, you can move everything from *Installation instructions* through *Testing* to a separate **Contributing.md** file to keep your **ReadMe.md** more succinct.
-
-
-### Working with issues
-
-- Explain how to submit a bug.
-- Explain how to submit a feature request.
-- Explain how to contribute to an existing issue.
-
-To create a new issue, please use the blank issue template (available when you click New Issue).  If you want to create an issue for other projects to use, please create the issue in your own repository and send a slack message to one of your hack night hosts with the link.
-
-
-### Working with forks and branches
-
-- Explain your guidelines here.
-
-
-### Working with pull requests and reviews
-
-- Explain your process.
-
-
-### Testing
-
-- Provide instructions.
-
-
-
-# Contact info
-
-Include at least one way (or more, if possible) to reach your team with questions or comments.
-
-
-### Licensing
+## Licensing
 
 This code is made available under the [GNU General Public Licence v2.0](LICENSE)
