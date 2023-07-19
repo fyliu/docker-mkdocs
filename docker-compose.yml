@@ -2,10 +2,10 @@ version: "3.9"
 services:
   mkdocs:
     # specifying the image here tags the image being built rather than pulls the image
-    image: fyliu/mkdocs:testing-alpine
+    image: fyliu/mkdocs:testing
     build:
       context: .
-      dockerfile: Dockerfile.alpine
+      dockerfile: Dockerfile
     container_name: mkdocs
     command: mkdocs serve -a "0.0.0.0:8000"
     ports:
