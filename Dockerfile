@@ -5,8 +5,8 @@ FROM python:3.11.4-alpine3.18
 WORKDIR /app
 
 # install system dependencies
-RUN apk add --no-cache \
-git=2.40.1-r0 # mkdocs-multirepo-plugin requires this
+#RUN apk add --no-cache \
+#git=2.40.1-r0 # mkdocs-multirepo-plugin requires this
 
 # install dependencies
 COPY requirements.txt .
