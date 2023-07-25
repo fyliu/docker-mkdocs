@@ -75,7 +75,7 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
     version: "3.9"
     services:
       mkdocs:
-        image: hackforlaops/mkdocs:latest-alpine3.18 # (1)!
+        image: hackforlaops/mkdocs:latest # (1)!
         # build:
         #   context: .
         #   dockerfile: Dockerfile
@@ -137,7 +137,7 @@ If your project wants to try other mkdocs plugins not in the hackforla image, he
 
     ```docker title="Dockerfile.mkdocs" hl_lines="16"
     # base image
-    FROM hackforlaops/mkdocs:latest-alpine3.18
+    FROM hackforlaops/mkdocs:latest
 
     # set work directory
     WORKDIR /app
@@ -162,7 +162,7 @@ If your project wants to try other mkdocs plugins not in the hackforla image, he
     ``` yaml title="docker-compose.mkdocs.yml" hl_lines="3-6"
     ...
       mkdocs:
-          #image: hackforlaops/mkdocs:latest-alpine3.18
+          #image: hackforlaops/mkdocs:latest
           build:
           context: .
           dockerfile: Dockerfile.mkdocs
