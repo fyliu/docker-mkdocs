@@ -210,7 +210,7 @@ Now that we have poetry, we can use it to add the plugin.
     ```
 
     1. This docker-compose command runs the next line inside the docker container
-    2. Add (install) mkdocs-awesome-pages to pyproject.toml under the docs group.
+    2. Add (install) mkdocs-awesome-pages to pyproject.toml under the docs group. This is in case your project also uses poetry and need to separate the docs dependencies from the rest.
 
 #### Build the image
 
@@ -218,11 +218,11 @@ Now that we have poetry, we can use it to add the plugin.
 
     ``` bash
     docker-compose -f docker-compose.mkdocs.yml run mkdocs \ # (1)!
-    poetry export -f requirements.txt --without-hashes > requirements.txt # (2)!
+    poetry export -f requirements.txt --without-hashes --with docs > requirements.txt # (2)!
     ```
 
-    1. This is also contained in a script `export_requirements.sh` in the scripts directory of this project.
-    2. Export in requirements.txt format, to requirements.txt.
+    1. A very similar command is also contained in a script `export_requirements.sh` in the `scripts/` directory of this project.
+    2. Export dependencies, including the docs group, in requirements.txt format, to requirements.txt.
 
 1. Build and run the docker image with the new plugin
 
@@ -232,7 +232,7 @@ Now that we have poetry, we can use it to add the plugin.
 
 #### Use the plugin
 
-1. Add any configuration to mkdocs.yml
+1. Add any configuration to `mkdocs.yml`
 1. Use the plugin in the documentation
 1. Test that the plugin works
 

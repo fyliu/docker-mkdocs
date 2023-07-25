@@ -15,6 +15,8 @@
 
 ## How to run MkDocs
 
+These are the ways to run MkDocs within this project.
+
 === "Docker"
 
     #### Docker
@@ -92,6 +94,8 @@
         ++ctrl+c++ to quit mkdocs
 
 ## How to update the package versions
+
+Staying updated may give us speed improvements (python), better security, bugfixes, and new features.
 
 1. [Add poetry to the image](../poetry#how-to-add-poetry-to-the-image){:target="_blank"}
 

@@ -1,3 +1,9 @@
+# Poetry
+
+Poetry is a virtual environment and dependency manager, builder and publisher for python. We are using it as a tool to update our python dependencies.
+
+The configuration file, `pyproject.toml` in the project root, contains the list of dependencies. From there, we can export a `requirements.txt` file for use with pip, which we use in our `Dockerfile`.
+
 ## How to add poetry to the image
 
 Adding poetry to the image lets us manage the project dependencies without installing it on the host machine.
@@ -23,7 +29,7 @@ Adding poetry to the image lets us manage the project dependencies without insta
 
 ## How to add a package
 
-pyproject-fmt is an auto-formatter for the pyproject.toml configuration file.
+We use `pyproject-fmt` as an example. `pyproject-fmt` is an auto-formatter for the pyproject.toml configuration file.
 
 1. Get a shell inside the container
 
