@@ -1,6 +1,8 @@
 # Docker
 
-## Remove extra files from docker image using `.dockerignore`
+## How to remove extra files from docker image
+
+We use the `.dockerignore` file for this.
 
 1. Look into the image to find extra unneeded files
 

@@ -23,18 +23,24 @@
     docker push fyliu/local-mkdocs:testing
     ```
 
-## Create token
+## How to create an access token
 
-Docker tokens can be passed in as docker passwords. The difference is passwords can be renewed while tokens remain in use. Tokens are created with different access levels and can be revoked individually for different clients. We need write access to be able to push images, but not the ability to delete them.
+### Token vs password
+
+Docker tokens can be passed in as docker passwords. The difference is passwords can be renewed while tokens remain in use. Tokens are created with different access levels and can be revoked individually for different clients.
+
+We need write access to be able to push images, but not the ability to delete them, so a token is the better way.
+
+### Create the token
 
 
 1. Create New Access Token in DockerHub.
 
     1. In the upper-right, click on your username > Account Settings list item > Security tab
-    1. Click the New Access Token button
+    1. Click the ++"New Access Token"++ button
     1. For the Description, enter "docker-mkdocs action push"
     1. For Permissions, choose "Read, Write"
-    1. Click the Generate button
+    1. Click the ++"Generate"++ button
     1. Copy and save the token
 
 1. Test login with the token

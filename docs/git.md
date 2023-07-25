@@ -26,3 +26,9 @@ add untracked file to git
 ```bash
 git add docs/git.md
 ```
+
+rebase to the beginning
+
+``` bash
+git rebase --interactive --root main
+```

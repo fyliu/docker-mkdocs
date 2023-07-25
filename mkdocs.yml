@@ -6,7 +6,7 @@ nav:
   - Maintainer Guide: maintainer.md
   - Guides ideas: guides-ideas.md
   - Tools:
-    - DockerHub Guide: dockerhub.md
+    - DockerHub: dockerhub.md
     - Git: git.md
     - Docker: docker.md
     - Poetry: poetry.md
