@@ -1,5 +1,13 @@
 # Guides ideas
 
+???+ abstract "Todo"
+
+    - [x] how to extend to install other plugins in ci.yml and Dockerfile
+    - [x] optimize Dockerfile
+    - [ ] docker multi-platform images https://plainenglish.io/blog/which-docker-images-can-you-use-on-the-mac-m1-daba6bbc2dc5
+    - [ ] multirepo plugin
+    - [ ] ~~[people depot] auto merge docs branch with gh-actions~~
+
 ## Needed guides
 - [ ] setup ssh config, ssh public key, etc
 - [ ] x forwarding through ssh session

@@ -12,17 +12,17 @@ At Hack for LA, we have projects that utilize many different core technologies. 
 
 ### For Projects
 
-Projects can use the image by referencing it directly in a docker-compose.yml or the commandline. The recommended way is to create a docker-compose.yml file. See User Docs for instructions.
+Projects can use the image by referencing it directly in a docker-compose.yml or the commandline. The recommended way is to create a docker-compose.yml file. See User Docs for instructions. From there, projects are free to configure the site as needed.
 
-Projects can extend the image to add MkDocs plugins and dependencies as required. See User Docs for instructions
+Projects can extend the image to add MkDocs plugins and dependencies if needed. See User Docs for instructions
 
-When it's determined useful, projects can request that their plugin be incorporated into this image by doing a pull request from a fork.
+When it's determined useful, projects can request that their plugin be incorporated into this image by opening a pull request from a fork.
 
 ### For Maintainers
 
-Maintainers can update package versions, or add MkDocs plugins or system dependencies. See maintainer docs for details.
+Maintainers can update package versions, add MkDocs plugins, or add system dependencies. See maintainer docs for details.
 
-Maintainers can build an image and upload it to the docker hub repository for testing. Once the main branch is updated, the github workflow will build and push an image to docker hub. See maintainer docs for more details.
+Maintainers can build an image and upload it to the docker hub repository for testing. Once the main branch is updated, the github workflow will build and push an image to docker hub. See maintainer docs for details.
 
 ## Technology used
 

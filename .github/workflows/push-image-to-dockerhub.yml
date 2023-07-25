@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/mkdocs:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/mkdocs:latest-alpine3.18

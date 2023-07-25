@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 
-docker-compose -f docker-compose.yml run mkdocs sh -c "set -eux;
+docker-compose run mkdocs sh -c "set -eux;
 poetry export -f requirements.txt --without-hashes > requirements.txt;
 "
 #docker-compose -f docker-compose.yml run mkdocs sh -c "poetry update &&
