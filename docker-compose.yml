@@ -1,7 +1,6 @@
 version: "3.9"
 services:
   mkdocs:
-    # specifying the image here tags the image being built rather than pulls the image
     image: fyliu/mkdocs:testing-alpine3.18
     build:
       context: .
@@ -9,6 +8,6 @@ services:
     container_name: mkdocs
     command: mkdocs serve -a "0.0.0.0:8000"
     ports:
-      - "8005:8000"
+      - "8000:8000"
     volumes:
       - .:/app

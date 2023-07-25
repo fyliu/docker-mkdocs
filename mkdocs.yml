@@ -3,7 +3,7 @@ site_name: Docker MkDocs
 nav:
   - Home: index.md
   - User Guide: usage.md
-  - Maintainer Guide: mkdocs.md
+  - Maintainer Guide: maintainer.md
   - Guides ideas: guides-ideas.md
   - Tools:
     - DockerHub Guide: dockerhub.md
