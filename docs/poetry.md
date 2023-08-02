@@ -4,6 +4,36 @@ Poetry is a virtual environment and dependency manager, builder and publisher fo
 
 The configuration file, `pyproject.toml` in the project root, contains the list of dependencies. From there, we can export a `requirements.txt` file for use with pip, which we use in our `Dockerfile`.
 
+## How to add poetry to the running container
+
+Adding poetry to the running container lets us manage project dependencies without installing it on the host machine. Not adding it to the docker image keeps the image smaller.
+
+1. Make sure the container is running
+
+    ``` bash
+    docker-compose up -d # (1)!
+    ```
+
+    1. This runs the container in background (daemon) mode
+
+1. Install poetry inside the running container
+
+    ``` bash
+    docker-compose exec mkdocs pip install poetry # (1)!
+    ```
+
+    1. Runs `pip install poetry` in the mkdocs service container
+
+    Now we can call poetry that's in the image
+
+1. Take down the container when done
+
+    ``` bash
+    docker-compose down # (1)!
+    ```
+
+    1. This stops and deletes the container. The poetry install is gone as well. If we don't want to delete the container, use `docker-compose stop`.
+
 ## How to add poetry to the image
 
 Adding poetry to the image lets us manage the project dependencies without installing it on the host machine.
