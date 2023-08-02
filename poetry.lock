@@ -422,26 +422,6 @@ markdown = ">=3.2"
 pyyaml = "*"
 
 [[package]]
-name = "pyproject-fmt"
-version = "0.13.0"
-description = "Format your pyproject.toml file"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "pyproject_fmt-0.13.0-py3-none-any.whl", hash = "sha256:36d9a4a71776f4cd2f82b7582f45698428a4e038dd12d6eb3b123d43c78499ab"},
-    {file = "pyproject_fmt-0.13.0.tar.gz", hash = "sha256:aaad7398fe810c9087b33c1cc74d49b51a746bb05e9999371719b577139d0c49"},
-]
-
-[package.dependencies]
-natsort = ">=8.3.1"
-packaging = ">=23.1"
-tomlkit = ">=0.11.8"
-
-[package.extras]
-docs = ["furo (>=2023.5.20)", "sphinx (>=7.0.1)", "sphinx-argparse-cli (>=1.11)", "sphinx-autodoc-typehints (>=1.23.1,!=1.23.4)", "sphinx-copybutton (>=0.5.2)"]
-test = ["covdefaults (>=2.3)", "pytest (>=7.3.2)", "pytest-cov (>=4.1)", "pytest-mock (>=3.10)"]
-
-[[package]]
 name = "python-dateutil"
 version = "2.8.2"
 description = "Extensions to the standard Python datetime module"
@@ -648,17 +628,6 @@ files = [
 ]
 
 [[package]]
-name = "tomlkit"
-version = "0.12.1"
-description = "Style preserving TOML library"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "tomlkit-0.12.1-py3-none-any.whl", hash = "sha256:712cbd236609acc6a3e2e97253dfc52d4c2082982a88f61b640ecf0817eab899"},
-    {file = "tomlkit-0.12.1.tar.gz", hash = "sha256:38e1ff8edb991273ec9f6181244a6a391ac30e9f5098e7535640ea6be97a7c86"},
-]
-
-[[package]]
 name = "urllib3"
 version = "2.0.4"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -731,4 +700,4 @@ bracex = ">=2.1.1"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.4"
-content-hash = "ccc0d60321463046651a8caf694b99e95ec8d690df6704566cc425c70610ac20"
+content-hash = "13810f49868c83763a7b075ba787a743577337f3b305c22dd3010cf7b35de0e0"

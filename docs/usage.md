@@ -99,7 +99,8 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
     Use the docker image to create the new project
 
     ``` bash
-    docker-compose -f docker-compose.mkdocs.yml run mkdocs mkdocs new . # (1)!
+    docker-compose -f docker-compose.mkdocs.yml run mkdocs \
+    mkdocs new . # (1)!
     ```
 
     1. docker-compose run executes a command from a new docker image container. In this case, inside the mkdocs container, execute `mkdocs new .` (note the period for the current directory).
@@ -129,13 +130,13 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
 
 If your project wants to try other mkdocs plugins not in the hackforla image, here's a way to extend the image on your own before asking to add it to the hackforla image.
 
-??? info "The hackforla image is built from [hackforla/mkdocs-docker](https://github.com/hackforla/ghpages-docker), where the mkdocs plugins are listed in `pyproject.toml`."
+!!! info "The hackforla image is built from [hackforla/mkdocs-docker](https://github.com/hackforla/ghpages-docker), where the mkdocs plugins are listed in `pyproject.toml`."
 
 #### Get poetry
 
 1. Add your own `Dockerfile` to install the plugin for local usage that also installs poetry
 
-    ```docker title="Dockerfile.mkdocs" hl_lines="16"
+    ```docker title="Dockerfile.mkdocs" hl_lines="21-23"
     # base image
     FROM hackforlaops/mkdocs:latest
 
@@ -144,14 +145,22 @@ If your project wants to try other mkdocs plugins not in the hackforla image, he
 
     # install system dependencies
     # (2)!
-    #RUN apk add --no-cache \
-    #git=2.40.1-r0 # mkdocs-multirepo-plugin requires this
+    #RUN \
+    #  --mount=type=cache,target=/var/cache \
+    #  apk add \
+    #  # mkdocs-multirepo-plugin requires this
+    #  git=2.40.1-r0
 
     # install dependencies
     # (1)!
     COPY requirements.txt .
-    RUN pip install --no-cache-dir -r requirements.txt
-    RUN pip install --no-cache-dir poetry==1.5.1
+    RUN \
+      --mount=type=cache,target=/root/.cache \
+      pip install -r requirements.txt
+    RUN \
+      --mount=type=cache,target=/root/.cache \
+      pip install poetry==1.5.1
+
     ```
 
     1. Python plugins should be specified in requirement.txt to be installed.
@@ -164,8 +173,8 @@ If your project wants to try other mkdocs plugins not in the hackforla image, he
       mkdocs:
           #image: hackforlaops/mkdocs:latest
           build:
-          context: .
-          dockerfile: Dockerfile.mkdocs
+            context: .
+            dockerfile: Dockerfile.mkdocs
           container_name: mkdocs
     ...
     ```

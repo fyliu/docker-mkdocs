@@ -8,7 +8,7 @@
 ├── docs/              # Contains documentation pages
 ├── mkdocs.yml         # MkDocs configs
 ├── pyproject.toml     # Poetry configs
-├── requirements.txt   # Python packages list
+├── requirements.txt   # Python packages list (generated)
 └── scripts
     └── export_requirements.sh # Generates the requirements file
 ```
@@ -95,14 +95,14 @@ These are the ways to run MkDocs within this project.
 
 ## How to update the package versions
 
-Staying updated may give us speed improvements (python), better security, bugfixes, and new features.
+Staying updated may give us speed improvements (python), better security, and bugfixes. Docker hub, for example, can scan image layers to find packages with security advisories. These are the steps to update the package versions.
 
-1. [Add poetry to the image](../poetry#how-to-add-poetry-to-the-image){:target="_blank"}
+1. [Add poetry to the container](../poetry/#how-to-add-poetry-to-the-running-container)
 
 1. Update packages using poetry
 
     ``` bash
-    docker-compose run mkdocs sh -c "poetry update"
+    docker-compose exec mkdocs sh -c "poetry update"
     ```
 
 1. Export `requirements.txt`
@@ -116,7 +116,7 @@ Staying updated may give us speed improvements (python), better security, bugfix
     === "command"
 
         ``` bash
-        docker-compose run mkdocs \ # (1)!
+        docker-compose exec mkdocs \ # (1)!
         poetry export -f requirements.txt --without-hashes > requirements.txt # (2)!
         ```
 
@@ -130,16 +130,18 @@ Staying updated may give us speed improvements (python), better security, bugfix
     git commit -m"chore: update package versions"
     ```
 
-1. Once merged into `main`, the CD will build the new image and upload it with the `latest` tag.
+1. Once merged into `main`, the CI will build the new image and upload it with the `latest` tag.
 
 ## How to add an MkDocs plugin
 
-1. [Add poetry to the image](../poetry#how-to-add-poetry-to-the-image){:target="_blank"}
+Let's say we want to add the `mkdocs-multirepo-plugin`.
+
+1. [Add poetry to the container](../poetry/#how-to-add-poetry-to-the-running-container)
 
 1. Install the new MkDocs plugin
 
     ``` bash
-    docker-compose run mkdocs sh -c "poetry add mkdocs-multirepo-plugin"
+    docker-compose exec mkdocs sh -c "poetry add mkdocs-multirepo-plugin"
     ```
 
 1. Export `requirements.txt`
@@ -153,7 +155,7 @@ Staying updated may give us speed improvements (python), better security, bugfix
     === "command"
 
         ``` bash
-        docker-compose run mkdocs \ # (1)!
+        docker-compose exec mkdocs \ # (1)!
         poetry export -f requirements.txt --without-hashes > requirements.txt # (2)!
         ```
 
@@ -162,16 +164,20 @@ Staying updated may give us speed improvements (python), better security, bugfix
 
 1. Add any system dependencies in the `Dockerfile`
 
+    We're adding git here, which is a dependency of mkdocs-multirepo-plugin
+
     ```docker title="Dockerfile"
     ...
     # install system dependencies
-    RUN apk add --no-cache \
-    git=2.40.1-r0
+    RUN \
+      --mount=type=cache,target=/var/cache \
+      apk add \
+      git=2.40.1-r0
     # (1)!
     ...
     ```
 
-    1. mkdocs-multirepo-plugin requires git
+    1. Mount the `/var/cache` directory as cache in docker when running the command
 
 1. Commit `requirements.txt` and `Dockerfile`
 
@@ -180,7 +186,7 @@ Staying updated may give us speed improvements (python), better security, bugfix
     git commit -m"feat: add plugin mkdocs-multirepo-plugin"
     ```
 
-1. Once merged into `main`, the CD will build the new image and upload it with the `latest` tag.
+1. Once merged into `main`, the CI will build the new image and upload it with the `latest` tag.
 
 ??? info "How we set it up"
 
