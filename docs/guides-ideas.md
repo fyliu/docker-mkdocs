@@ -6,6 +6,8 @@
     - [x] optimize Dockerfile
     - [ ] docker multi-platform images https://plainenglish.io/blog/which-docker-images-can-you-use-on-the-mac-m1-daba6bbc2dc5
     - [ ] multirepo plugin
+    - [ ] --pull --no-cache docker options
+    - [ ] [multi platform builds](https://docs.docker.com/build/ci/github-actions/multi-platform/) and other improvements
     - [ ] ~~[people depot] auto merge docs branch with gh-actions~~
 
 ## Needed guides
