@@ -36,8 +36,8 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-repo_url: https://github.com/fyliu/docker-mkdocs
-repo_name: fyliu/docker-mkdocs
+repo_url: https://github.com/hackforla/docker-mkdocs
+repo_name: hackforla/docker-mkdocs
 edit_uri: edit/main/docs/
 
 plugins:

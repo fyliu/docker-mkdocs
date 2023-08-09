@@ -17,10 +17,10 @@ Docker Hub is a container registry hosted by Docker. It is the default whenever 
     The follow commands logs into dockerhub, tags the local image as testing, and pushes it to dockerhub
 
     ```bash
-    docker login --username=fyliu
+    docker login --username=hackforlaops
     docker images
-    docker tag b6047b203915 fyliu/local-mkdocs:testing
-    docker push fyliu/local-mkdocs:testing
+    docker tag b6047b203915 hackforlaops/local-mkdocs:testing
+    docker push hackforlaops/local-mkdocs:testing
     ```
 
 ## How to create an access token
@@ -45,7 +45,7 @@ We need write access to be able to push images, but not the ability to delete th
 1. Test login with the token
 
     ```bash
-    docker login -u fyliu
+    docker login -u hackforlaops
     Password: # pass in the token at the prompt
     ...
     Login succeeded
@@ -55,8 +55,8 @@ We need write access to be able to push images, but not the ability to delete th
 
     ```bash
     docker images
-    docker tag b6047b203915 fyliu/mkdocs:testing # (1)!
-    docker push fyliu/mkdocs:testing
+    docker tag b6047b203915 hackforlaops/mkdocs:testing # (1)!
+    docker push hackforlaops/mkdocs:testing
     ```
 
     1. The hash value is from the images list for the docker-mkdocs image in the local system
