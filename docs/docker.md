@@ -24,7 +24,7 @@ We use the `.dockerignore` file for this. It marks project files to skip when bu
 
 ## Cache mount
 
-This helps speed up subsequent docker builds by caching intermediate files and reusing them across builds. It's available with docker buildkit. The key here is to disable anything that would delete the cache, because we want to preserve it. The cache mount is not going to end up in the docker image being built, so there's no concern about disk space usage.
+This helps speed up subsequent docker builds by caching intermediate files and reusing them across builds. It's available with docker buildkit. The key here is to disable anything that could delete the cache, because we want to preserve it. The cache mount is not going to end up in the docker image being built, so there's no concern about disk space usage.
 
 Put this flag between `RUN` and the command
 
@@ -34,30 +34,33 @@ RUN \
   pip install -r requirements.txt
 ```
 
-For us using pip, the files are stored in `/root/.cache/pip`.
+For pip, the files are by default stored in `/root/.cache/pip`.  [Pip caching docs](https://pip.pypa.io/en/stable/topics/caching/)
+For apk, the cache directory is `/var/cache/apk/`. [APK wiki on local cache](https://wiki.alpinelinux.org/wiki/Local_APK_cache)
 
 ??? info "References"
-    - buildkit mount the cache https://vsupalov.com/buildkit-cache-mount-dockerfile/
-    - proper usage of mount cache https://dev.doroshev.com/blog/docker-mount-type-cache/
-    - mount cache reference https://docs.docker.com/engine/reference/builder/#run---mounttypecache
+    - [buildkit mount the cache](https://vsupalov.com/buildkit-cache-mount-dockerfile/)
+    - [proper usage of mount cache](https://dev.doroshev.com/blog/docker-mount-type-cache/)
+    - [mount cache reference](https://docs.docker.com/engine/reference/builder/#run---mounttypecache)
 
-## Reduce the image size
+## Reducing the image size
 
-There are methods to do this on many levels. All of these methods contribute to reduce the final image size. We list ones we considered but didn't use in order to explain why.
+There are methods to do this on many levels. All of these methods contribute to reduce the final image size, either by skipping generation of intermediate files or by removing them afterward. We list the commonly-recommended methods here although we opted to use cache mount instead, which speeds up image rebuilds. The methods discussed here may be more suitable for a CI environment.
 
 ### Docker
 
 1. Docker cache mount
 
-    See [cache mount](#cache-mount) above. There's no need to delete any files since they're in a cache mount that's not part of the docker image.
+    We use this method instead of ones which disable caching. See [cache mount](#cache-mount) above. There's no need to delete any files since they're in a cache mount that's not part of the docker image.
 
 ### Python
 
-1. Python skip bytecode generation
+1. Skip bytecode (.pyc) generation
+
+    [Python docs on `PYTHONDONTWRITEBYTECODE`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONDONTWRITEBYTECODE)
 
     === "env variable"
 
-        We can set this environment variable
+        Set this environment variable
 
         ``` docker
         ENV PYTHONDONTWRITEBYTECODE 1
@@ -65,54 +68,82 @@ There are methods to do this on many levels. All of these methods contribute to 
 
     === "command env"
 
-        Or we can set it before the command, like this
+        Set the `-B` flag for python
 
         ``` docker
-        RUN PYTHONDONTWRITEBYTECODE=1 pip install -r requirements.txt
+        RUN python3 -B -m pip install -r requirements.txt
         ```
 
-1. pycache prefix and rm
+1. Pycache prefix and rm
 
-    Set this environment variable to make python store all pycache bytecode files under some directory
+    [Python docs on `PYTHONPYCACHEPREFIX`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPYCACHEPREFIX)
 
-    ``` docker
-    ENV PYTHONPYCACHEPREFIX=/pycache/
-    ```
+    1. Tell python to write `.pyc` files in a mirror directory
 
-    Or use the commandline flag for python
+        === "env variable"
 
-    ``` docker
-    RUN python3 -X pycache_prefix=/pycache/ -m pip install -r requirements.txt
-    ```
+            Set this environment variable to make python store all pycache bytecode files under some directory
 
-    Then remove the files in the same RUN command by appending this to the end
+            ``` docker
+            ENV PYTHONPYCACHEPREFIX=/root/.cache/pycache/
+            ```
 
-    ``` bash
-    rm -rf /pycache /root/.cache
-    ```
+        === "flag"
+
+            Use the commandline flag for python
+
+            ``` docker
+            RUN python3 -X pycache_prefix=/root/.cache/pycache/ -m pip install -r requirements.txt
+            ```
+
+    1. Remove the files in the same RUN command by appending this to the end
+
+        ``` bash
+        && rm -rf /root/.cache/pycache/
+        ```
 
 ### Pip
 
-1. Pip don't compile python into byte code
+1. Don't compile python into byte code
 
-    Just pass the flag into pip to skip generating `pyc` files during install
+    Pass the flag into pip to skip generating `pyc` files during install
 
     ``` docker
     RUN pip install --no-compile -r requirements.txt
     ```
 
-1. Pip no cache dir (unused because the cache is not part of the image anyway, and it speeds up subsequent builds)
+1. Disable caching
 
-    Set this environment variable
+    [Pip docs on caching](https://pip.pypa.io/en/stable/topics/caching/)
+
+    === "env variable"
+
+        Set this environment variable
+
+        ``` bash
+        ENV PIP_NO_CACHE_DIR=1
+        ```
+
+    === "flag"
+
+        Pass this flag into pip
+
+        ``` bash
+        RUN pip install --no-cache-dir -r requirements.txt
+        ```
+
+## Clean build
+
+Combineable flags can be passed into a docker or docker-compose build to force a clean build. See [docker build options](https://docs.docker.com/engine/reference/commandline/build/#options)
+
+1. Try to download the latest base image
 
     ``` bash
-    ENV PIP_NO_CACHE_DIR=1 \
+    docker-compose build --pull
     ```
 
-    Or pass this flag into pip
+1. Disable caching. Build everything
 
     ``` bash
-    RUN pip install --no-cache-dir -r requirements.txt
+    docker-compose build --no-cache
     ```
-
-1.
