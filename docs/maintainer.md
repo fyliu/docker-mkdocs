@@ -13,6 +13,8 @@
     └── export_requirements.sh # Generates the requirements file
 ```
 
+We are following this [guide for multiplatform builds](https://docs.docker.com/build/ci/github-actions/multi-platform/). It recommends a matrix strategy if we ever need to add more platforms.
+
 ## How to run MkDocs
 
 These are the ways to run MkDocs within this project.
