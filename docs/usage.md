@@ -69,8 +69,6 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
 
 1. Create `docker-compose.mkdocs.yml`.
 
-    The `.mkdocs` in the name makes it so it doesn't conflict with the main `docker-compose.yml` in the project.
-
     ```yaml title="docker-compose.mkdocs.yml"
     version: "3.9"
     services:
@@ -79,7 +77,6 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
         # build:
         #   context: .
         #   dockerfile: Dockerfile
-        container_name: mkdocs
         command: mkdocs serve -a "0.0.0.0:8000" # (2)!
         ports:
           - "8005:8000" # (3)!
@@ -175,7 +172,6 @@ If your project wants to try other mkdocs plugins not in the hackforla image, he
           build:
             context: .
             dockerfile: Dockerfile.mkdocs
-          container_name: mkdocs
     ...
     ```
 
