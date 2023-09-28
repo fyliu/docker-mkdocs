@@ -23,6 +23,8 @@ These are the ways to run MkDocs within this project.
 
     #### Docker
 
+    This option is required for the other maintenance steps below.
+
     1. Build the image
 
         ``` bash
@@ -35,7 +37,7 @@ These are the ways to run MkDocs within this project.
         docker-compose up
         ```
 
-    1. Open a browser to `http://localhost:8000/` to see the documentation locally
+    1. Open a browser to `http://localhost:8000/` to view the documentation locally
 
     1. Modify the files in the `docs/` directory. The site will auto update when the files are saved.
 
@@ -61,7 +63,7 @@ These are the ways to run MkDocs within this project.
         mkdocs serve -a localhost:8000
         ```
 
-    1. Open a browser to `http://localhost:8000/` to see the documentation locally
+    1. Open a browser to `http://localhost:8000/` to view the documentation locally
 
     1. Modify the files in the `docs/` directory. The site will auto update when the files are saved.
 
@@ -73,7 +75,7 @@ These are the ways to run MkDocs within this project.
 
     #### Local Install (poetry)
 
-    python poetry must be installed in the local system
+    python poetry must be installed in the local system. We recommend installing via pipx into an isolated environment.
 
     1. Install mkdocs
 
@@ -87,7 +89,7 @@ These are the ways to run MkDocs within this project.
         poetry run mkdocs serve -a localhost:8000
         ```
 
-    1. Open a browser to `http://localhost:8000/` to see the documentation locally
+    1. Open a browser to `http://localhost:8000/` to view the documentation locally
 
     1. Modify the files in the `docs/` directory. The site will auto update when the files are saved.
 
@@ -118,17 +120,18 @@ Staying updated may give us speed improvements (python), better security, and bu
     === "command"
 
         ``` bash
-        docker-compose exec mkdocs \ # (1)!
-        poetry export -f requirements.txt --without-hashes > requirements.txt # (2)!
+        # (1)!
+        docker-compose exec mkdocs \
+        poetry export -f requirements.txt > requirements.txt # (2)!
         ```
 
-        1. This docker-compose command runs the next line inside the docker container
+        1. This docker-compose command runs the second line inside the docker container
         2. Export in requirements.txt format, to requirements.txt.
 
 1. Commit the requirements file
 
     ``` bash
-    git add requirements.txt
+    git add requirements.txt poetry.lock
     git commit -m"chore: update package versions"
     ```
 
@@ -157,11 +160,12 @@ Let's say we want to add the `mkdocs-multirepo-plugin`.
     === "command"
 
         ``` bash
-        docker-compose exec mkdocs \ # (1)!
-        poetry export -f requirements.txt --without-hashes > requirements.txt # (2)!
+        # (1)!
+        docker-compose exec mkdocs \
+        poetry export -f requirements.txt > requirements.txt # (2)!
         ```
 
-        1. This docker-compose command runs the next line inside the docker container
+        1. This docker-compose command runs the second line inside the docker container
         2. Export in requirements.txt format, to requirements.txt.
 
 1. Add any system dependencies in the `Dockerfile`
@@ -184,7 +188,7 @@ Let's say we want to add the `mkdocs-multirepo-plugin`.
 1. Commit `requirements.txt` and `Dockerfile`
 
     ``` bash
-    git add requirements.txt Dockerfile
+    git add requirements.txt Dockerfile pyproject.toml poetry.lock
     git commit -m"feat: add plugin mkdocs-multirepo-plugin"
     ```
 
@@ -254,7 +258,7 @@ Let's say we want to add the `mkdocs-multirepo-plugin`.
 
     ``` bash
     # (1)!
-    poetry export -f requirements.txt --without-hashes > requirements.txt
+    poetry export -f requirements.txt > requirements.txt
     ```
 
     1. This is also contained in a script `export_requirements.sh` in the scripts directory
