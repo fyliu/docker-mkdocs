@@ -4,7 +4,6 @@ nav:
   - Home: index.md
   - User Guide: user-guide.md
   - Maintainer Guide: maintainer-guide.md
-  - Guides ideas: guides-ideas.md
   - Tools:
     - DockerHub: dockerhub.md
     - Git: git.md
