@@ -70,8 +70,11 @@ We need write access to be able to push images, but not the ability to delete th
 
     https://github.com/docker/login-action
 
-1. Create action secrets in github:
+1. Create action secrets in github so that different forks can configure and push to their own dockerhub accounts
 
     ``` bash
     DOCKER_USERNAME
     DOCKER_TOKEN
+    ```
+
+1. See `.github/workflows/build-image.yml` for complete configuration
