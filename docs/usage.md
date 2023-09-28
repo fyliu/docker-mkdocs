@@ -56,7 +56,7 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
     - to save time on mkdocs setup
     - the flexibility to customize configuration
 - Developers
-    - to save time on installing mkdocs locally
+    - to save time by not having to install mkdocs locally
     - to use a simple command to serve and work on documentation
 
 ## Mkdocs docker image
@@ -67,9 +67,9 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
 
 ##### Setup the local mkdocs service
 
-1. Create `docker-compose.mkdocs.yml`.
+1. Create `docker-compose.yml`.
 
-    ```yaml title="docker-compose.mkdocs.yml"
+    ```yaml title="docker-compose.yml"
     version: "3.9"
     services:
       mkdocs:
@@ -87,7 +87,7 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
     1. Use the pre-built image file from this project.
     1. Expose the site to all IPs. This enables browsing the site from another local computer.
     1. Expose the site on port 8005, in case 8000 is in use by the project.
-    1. Map the current directory to the /app directory in the container.
+    1. Map the current directory to the `/app` directory in the container. The current directory is expected to have a `docs/` directory.
 
 ##### Setup the mkdocs project
 
@@ -96,7 +96,7 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
     Use the docker image to create the new project
 
     ``` bash
-    docker-compose -f docker-compose.mkdocs.yml run mkdocs \
+    docker-compose run mkdocs \
     mkdocs new . # (1)!
     ```
 
@@ -112,10 +112,12 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
 1. Run the mkdocs server from the container
 
     ```bash
-    docker-compose -f docker-compose.mkdocs.yml up
+    docker-compose up # (1)!
     ```
 
-1. Open a browser to `http://localhost:8005/` to see the documentation locally
+    1. Optionally use the `-d` flag to run the container in the background
+
+1. Open a browser to [`http://localhost:8005/`](https://localhost:8005/) to view the documentation locally
 
 1. Modify the files in the docs directory. The site will auto-update when the files are saved.
 
@@ -156,7 +158,7 @@ If your project wants to try other mkdocs plugins not in the hackforla image, he
       pip install -r requirements.txt
     RUN \
       --mount=type=cache,target=/root/.cache \
-      pip install poetry==1.5.1
+      pip install poetry==1.6.1
 
     ```
 
@@ -165,7 +167,7 @@ If your project wants to try other mkdocs plugins not in the hackforla image, he
 
 1. Reference the new Dockerfile in the docker-compose file
 
-    ```yaml title="docker-compose.mkdocs.yml" hl_lines="3-6"
+    ```yaml title="docker-compose.yml" hl_lines="3-6"
     ...
       mkdocs:
           #image: hackforlaops/mkdocs:latest
@@ -178,7 +180,7 @@ If your project wants to try other mkdocs plugins not in the hackforla image, he
 1. Build the image.
 
     ```bash
-    docker-compose -f docker-compose.mkdocs.yml build
+    docker-compose build
     ```
 
 #### Add the new plugin
@@ -187,34 +189,45 @@ Now that we have poetry, we can use it to add the plugin.
 
 1. Create a pyproject.yml similar to the one in this repo.
 
-    ```yaml title="pyproject.yml"
-    [tool.poetry]
-    name = "project-name"
-    version = "0.1.0"
-    description = ""
-    authors = []
-    readme = "README.md"
+    === "Generate one using poetry"
 
-    [tool.poetry.dependencies]
-    python = "^3.11.4" # (1)!
+        ```bash
+        docker-compose run mkdocs poetry init # (1)!
+        ```
 
-    [build-system]
-    build-backend = "poetry.core.masonry.api"
-    requires = [
-      "poetry-core",
-    ]
-    ```
+        1. Do not call the project `mkdocs` since that's the name of a real project.
 
-    1. This is the python version in the `hackforla/docker-mkdocs/pyproject.toml` file. It can also be the version that's in the `hackforla/docker-mkdocs/Dockerfile`.
+    === "Copy or create one manually"
+
+        ```yaml title="pyproject.yml"
+        [tool.poetry]
+        name = "project-name"
+        version = "0.1.0"
+        description = ""
+        authors = []
+        readme = "README.md"
+
+        [tool.poetry.dependencies]
+        python = "^3.11.4" # (1)!
+
+        [build-system]
+        build-backend = "poetry.core.masonry.api"
+        requires = [
+          "poetry-core",
+        ]
+        ```
+
+        1. This is the python version in the `hackforla/docker-mkdocs/pyproject.toml` file. It can also be the version that's in the `hackforla/docker-mkdocs/Dockerfile`.
 
 1. Add the new plugin
 
     ``` bash
-    docker-compose -f docker-compose.mkdocs.yml run mkdocs \ # (1)!
-    poetry add mkdocs-awesome-pages --group docs # (2)!
+    # (1)!
+    docker-compose run mkdocs \
+    poetry add mkdocs-awesome-pages-plugin --group docs # (2)!
     ```
 
-    1. This docker-compose command runs the next line inside the docker container
+    1. This docker-compose command runs the second line inside the docker container
     2. Add (install) mkdocs-awesome-pages to pyproject.toml under the docs group. This is in case your project also uses poetry and need to separate the docs dependencies from the rest.
 
 #### Build the image
@@ -222,17 +235,16 @@ Now that we have poetry, we can use it to add the plugin.
 1. Export the requirements.txt
 
     ``` bash
-    docker-compose -f docker-compose.mkdocs.yml run mkdocs \ # (1)!
-    poetry export -f requirements.txt --without-hashes --with docs > requirements.txt # (2)!
+    docker-compose run mkdocs \
+    poetry export -f requirements.txt --without-hashes --with docs > requirements.txt # (1)!
     ```
 
-    1. A very similar command is also contained in a script `export_requirements.sh` in the `scripts/` directory of this project.
-    2. Export dependencies, including the docs group, in requirements.txt format, to requirements.txt.
+    1. Export dependencies, including the docs group, in requirements.txt format, to requirements.txt.
 
 1. Build and run the docker image with the new plugin
 
     ``` bash
-    docker-compose -f docker-compose.mkdocs.yml up --build
+    docker-compose up --build
     ```
 
 #### Use the plugin

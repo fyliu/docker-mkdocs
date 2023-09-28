@@ -12,25 +12,25 @@ At Hack for LA, we have projects that utilize many different core technologies. 
 
 ### For Projects
 
-Projects can use the image by referencing it directly in a docker-compose.yml or the commandline. The recommended way is to create a docker-compose.yml file. See User Docs for instructions. From there, projects are free to configure the site as needed.
+Projects can use the image by referencing it directly in a docker-compose.yml or the commandline. The recommended way is to create a docker-compose.yml file. See the User Guide for instructions. From there, projects are free to configure the site as needed.
 
-Projects can extend the image to add MkDocs plugins and dependencies if needed. See User Docs for instructions
+Projects can also extend the image to add MkDocs plugins and dependencies if needed. See the User Guide for instructions
 
 When it's determined useful, projects can request that their plugin be incorporated into this image by opening a pull request from a fork.
 
 ### For Maintainers
 
-Maintainers can update package versions, add MkDocs plugins, or add system dependencies. See maintainer docs for details.
+Maintainers can update package versions, add MkDocs plugins, or add system dependencies. See the Maintainer Guide for details.
 
-Maintainers can build an image and upload it to the docker hub repository for testing. Once the main branch is updated, the github workflow will build and push an image to docker hub. See maintainer docs for details.
+Maintainers can build and upload a test image to the docker hub repository for testing. Once the main branch is updated, the github workflow will build and push an image to docker hub. See the Maintainer Guide for details.
 
 ## Technology used
 
 - [python](https://docs.python.org/3/)
 - [mkdocs](https://www.mkdocs.org/getting-started/)
+- [docker](https://docs.docker.com)
 - [github actions](https://docs.docker.com/build/ci/github-actions/)
 - [docker hub](https://docs.docker.com/get-started/)
-- [docker](https://docs.docker.com)
 - [poetry](https://python-poetry.org/docs/)
 
 ## Contact info

@@ -26,6 +26,8 @@ Adding poetry to the running container lets us manage project dependencies witho
 
     Now we can call poetry that's in the image
 
+1. Use poetry for dependency management or other purposes.
+
 1. Take down the container when done
 
     ``` bash
