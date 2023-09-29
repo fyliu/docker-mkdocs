@@ -21,10 +21,15 @@ ENV PYTHONUNBUFFERED=1 \
 #  git=2.40.1-r0
 
 # install dependencies
-COPY requirements.txt .
+COPY *requirements.txt .
 RUN \
   --mount=type=cache,target=/root/.cache \
-  pip install -r requirements.txt
+  pip install -r requirements.txt \
+&& \
+  if [ -e user-requirements.txt ]; then \
+    pip install -U -r user-requirements.txt; \
+  fi
+
 #RUN \
 #  --mount=type=cache,target=/root/.cache \
 #  pip install poetry==1.5.1
