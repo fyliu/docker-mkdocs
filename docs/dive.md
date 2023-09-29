@@ -6,13 +6,13 @@ A tool to explore docker images by layer
 
 ## Examine image layer contents
 
-One useful functionality of this tool is to examine the contents of each layer. For example, it revealed python bytecode (*.pyc) files in the image that were taking up as much space as the python packages. That prompted some research to eliminate the bytecode files to significantly reduce the image size.
+One useful functionality of this tool is to examine the contents of each layer. For example, it revealed python bytecode (\*.pyc) files in the image that were taking up as much space as the python packages. That prompted some research to eliminate the bytecode files to significantly reduce the image size.
 
 Here are the steps to recreate that view
 
 1. Start the tool
 
-    ``` bash
+    ```bash
     dive hackforlaops/mkdocs:testing
     ```
 

@@ -29,6 +29,6 @@ git add docs/git.md
 
 rebase to the beginning
 
-``` bash
+```bash
 git rebase --interactive --root main
 ```

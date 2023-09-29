@@ -10,7 +10,7 @@ Adding poetry to the running container lets us manage project dependencies witho
 
 1. Make sure the container is running
 
-    ``` bash
+    ```bash
     docker-compose up -d # (1)!
     ```
 
@@ -18,7 +18,7 @@ Adding poetry to the running container lets us manage project dependencies witho
 
 1. Install poetry inside the running container
 
-    ``` bash
+    ```bash
     docker-compose exec mkdocs pip install poetry # (1)!
     ```
 
@@ -30,7 +30,7 @@ Adding poetry to the running container lets us manage project dependencies witho
 
 1. Take down the container when done
 
-    ``` bash
+    ```bash
     docker-compose down # (1)!
     ```
 
@@ -53,7 +53,7 @@ Adding poetry to the image lets us manage the project dependencies without insta
 
 1. Build the image
 
-    ``` bash
+    ```bash
     docker-compose build
     ```
 
@@ -65,13 +65,13 @@ We use `pyproject-fmt` as an example. `pyproject-fmt` is an auto-formatter for t
 
 1. Get a shell inside the container
 
-``` bash
+```bash
 docker-compose run mkdocs sh
 ```
 
 1. Install and run the package
 
-``` bash
+```bash
 pip install pyproject-fmt
 pyproject-fmt pyproject.toml
 ```
@@ -80,6 +80,6 @@ pyproject-fmt pyproject.toml
 
 Organizing packages into groups allows better organization of dependencies. For example, dev dependencies and docs dependencies as opposed to the ones for the main application.
 
-``` bash
+```bash
 poetry add pytest --group dev
 ```
