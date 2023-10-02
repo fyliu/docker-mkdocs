@@ -101,7 +101,7 @@ These are the ways to run MkDocs within this project.
 
 Staying updated may give us speed improvements (python), better security, and bugfixes. Docker hub, for example, can scan image layers to find packages with security advisories. These are the steps to update the package versions.
 
-1. [Add poetry to the container](../poetry/#how-to-add-poetry-to-the-running-container)
+1. [Add poetry to the container](poetry.md/#how-to-add-poetry-to-the-running-container)
 
 1. Update packages using poetry
 
@@ -141,7 +141,7 @@ Staying updated may give us speed improvements (python), better security, and bu
 
 Let's say we want to add the `mkdocs-multirepo-plugin`.
 
-1. [Add poetry to the container](../poetry/#how-to-add-poetry-to-the-running-container)
+1. [Add poetry to the container](poetry.md/#how-to-add-poetry-to-the-running-container)
 
 1. Install the new MkDocs plugin
 

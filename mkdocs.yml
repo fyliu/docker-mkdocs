@@ -42,6 +42,7 @@ edit_uri: edit/main/docs/
 
 plugins:
   - search
+  - autolinks
 
 markdown_extensions:
   - abbr
