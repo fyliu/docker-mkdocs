@@ -46,6 +46,10 @@ For apk, the cache directory is `/var/cache/apk/`. [APK wiki on local cache](htt
 
 There are methods to do this on many levels. All of these methods contribute to reduce the final image size, either by skipping generation of intermediate files or by removing them afterward. We list the commonly-recommended methods here although we opted to use cache mount instead, which speeds up image rebuilds. The methods discussed here may be more suitable for a CI environment.
 
+!!! Note "`mkdocs-material` `babel` dependency
+
+    `mkdocs-material` theme added `babel` as a dependency starting at version 9.2. As a result, the docker image size increased from <30MB to around 40MB. This is unavoidable.
+
 ### Docker
 
 1. Docker cache mount
