@@ -124,6 +124,18 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
 
     ++ctrl+c++ to quit the local server and stop the container
 
+#### Validate mkdocs configuration
+
+This will make sure the MkDocs site will work correctly. Do this before checking in your work.
+
+1. Run the validate script from the project root.
+
+    ```bash
+    ./scripts/validate_mkdocs.sh
+    ```
+
+1. Fix any problems.
+
 ### Extend the image
 
 If your project wants to try other mkdocs plugins not in the hackforla image, here's a way to extend the image on your own before asking to add it to the hackforla image.

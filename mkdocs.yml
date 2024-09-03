@@ -75,6 +75,15 @@ markdown_extensions:
       title: On this page
       permalink: true
 
+validation:
+  absolute_links: relative_to_docs
+  not_found: warn
+  links:
+    anchors: warn
+    unrecognized_links: warn
+  nav:
+    omitted_files: warn
+
 watch:
   - README.md
   - LICENSE
