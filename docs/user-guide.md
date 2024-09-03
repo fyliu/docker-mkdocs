@@ -70,7 +70,6 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
 1. Create `docker-compose.yml`.
 
     ```yaml title="docker-compose.yml"
-    version: "3.9"
     services:
       mkdocs:
         image: hackforlaops/mkdocs:latest # (1)!
