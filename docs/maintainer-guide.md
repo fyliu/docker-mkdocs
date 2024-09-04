@@ -10,7 +10,8 @@
 ├── pyproject.toml     # Poetry configs
 ├── requirements.txt   # Python packages list (generated)
 └── scripts
-    └── export_requirements.sh # Generates the requirements file
+    ├── export_requirements.sh # Generates the requirements file
+    └── validate_mkdocs.sh     # Validates the mkdocs build for config and link problems
 ```
 
 We are following this [guide for multiplatform builds](https://docs.docker.com/build/ci/github-actions/multi-platform/). It recommends a matrix strategy if we ever need to add more platforms.
