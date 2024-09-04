@@ -88,6 +88,20 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
     1. Expose the site on port 8005, in case 8000 is in use by the project.
     1. Map the current directory to the `/app` directory in the container. The current directory is expected to have a `docs/` directory.
 
+##### Setup automations
+
+```yaml title="GitHub Actions"
+.github/workflows
+├── build-image.yml
+├── deploy-docs.yml # (1)
+└── pull-request.yml # (2)
+```
+
+1. deploy the documentation on code updates.
+1. validate mkdocs configuration on pull requests.
+
+Copy the relevant files to your `.github/workflows/` directory and adapt them to your project as necessary
+
 ##### Setup the mkdocs project
 
 === "Create a new one"
