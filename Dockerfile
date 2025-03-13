@@ -22,6 +22,7 @@ ENV PYTHONUNBUFFERED=1 \
 
 # install dependencies
 COPY requirements.txt .
+# hadolint ignore=DL3042
 RUN \
   --mount=type=cache,target=/root/.cache \
   pip install -r requirements.txt
