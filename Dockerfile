@@ -2,7 +2,7 @@
 # we need at least syntax version 1.3 for the cache mount. 1 will use the latest 1.x version syntax
 
 # pull official base image
-FROM python:3.11-alpine3.18
+FROM python:3.12-alpine
 
 # set work directory
 WORKDIR /app
