@@ -2,7 +2,7 @@
 
 ## Project layout
 
-``` yaml title="Project structure"
+```yaml title="Project structure"
 ├── docker-compose.yml # Config to tag and run the image container
 ├── Dockerfile         # Instructions to build the image
 ├── docs/              # Contains documentation pages
@@ -28,13 +28,13 @@ These are the ways to run MkDocs within this project.
 
     1. Build the image
 
-        ``` bash
+        ```bash
         docker-compose build
         ```
 
     1. Start the container
 
-        ``` bash
+        ```bash
         docker-compose up
         ```
 
@@ -54,13 +54,13 @@ These are the ways to run MkDocs within this project.
 
     1. Install mkdocs
 
-        ``` bash
+        ```bash
         pip install -r requirements.txt
         ```
 
     1. Start the local server
 
-        ``` bash
+        ```bash
         mkdocs serve -a localhost:8000
         ```
 
@@ -80,13 +80,13 @@ These are the ways to run MkDocs within this project.
 
     1. Install mkdocs
 
-        ``` bash
+        ```bash
         poetry install
         ```
 
     1. Start the local server
 
-        ``` bash
+        ```bash
         poetry run mkdocs serve -a localhost:8000
         ```
 
@@ -106,7 +106,7 @@ Staying updated may give us speed improvements (python), better security, and bu
 
 1. Update packages using poetry
 
-    ``` bash
+    ```bash
     docker-compose exec mkdocs sh -c "poetry update"
     ```
 
@@ -114,24 +114,24 @@ Staying updated may give us speed improvements (python), better security, and bu
 
     === "script"
 
-        ``` bash
+        ```bash
         ./scripts/export_requirements.sh
         ```
 
     === "command"
 
-        ``` bash
+        ```bash
         # (1)!
         docker-compose exec mkdocs \
-        poetry export -f requirements.txt > requirements.txt # (2)!
+            poetry export -f requirements.txt > requirements.txt # (2)!
         ```
 
         1. This docker-compose command runs the second line inside the docker container
-        2. Export in requirements.txt format, to requirements.txt.
+        1. Export in requirements.txt format, to requirements.txt.
 
 1. Commit the requirements file
 
-    ``` bash
+    ```bash
     git add requirements.txt poetry.lock
     git commit -m"chore: update package versions"
     ```
@@ -146,7 +146,7 @@ Let's say we want to add the `mkdocs-multirepo-plugin`.
 
 1. Install the new MkDocs plugin
 
-    ``` bash
+    ```bash
     docker-compose exec mkdocs sh -c "poetry add mkdocs-multirepo-plugin"
     ```
 
@@ -154,20 +154,20 @@ Let's say we want to add the `mkdocs-multirepo-plugin`.
 
     === "script"
 
-        ``` bash
+        ```bash
         ./scripts/export_requirements.sh
         ```
 
     === "command"
 
-        ``` bash
+        ```bash
         # (1)!
         docker-compose exec mkdocs \
-        poetry export -f requirements.txt > requirements.txt # (2)!
+            poetry export -f requirements.txt > requirements.txt # (2)!
         ```
 
         1. This docker-compose command runs the second line inside the docker container
-        2. Export in requirements.txt format, to requirements.txt.
+        1. Export in requirements.txt format, to requirements.txt.
 
 1. Add any system dependencies in the `Dockerfile`
 
@@ -188,7 +188,7 @@ Let's say we want to add the `mkdocs-multirepo-plugin`.
 
 1. Commit `requirements.txt` and `Dockerfile`
 
-    ``` bash
+    ```bash
     git add requirements.txt Dockerfile pyproject.toml poetry.lock
     git commit -m"feat: add plugin mkdocs-multirepo-plugin"
     ```
@@ -203,13 +203,13 @@ Let's say we want to add the `mkdocs-multirepo-plugin`.
 
     ### Project directory
 
-    ``` bash
+    ```bash
     mkdir mkdocs-notes && cd $_
     ```
 
     ### Poetry project
 
-    ``` bash
+    ```bash
     poetry init —name docs —description “Project Documentation” # (1)!
     # use a modern stable python like version 3.11.4
     # don’t define dependencies interactively
@@ -219,35 +219,36 @@ Let's say we want to add the `mkdocs-multirepo-plugin`.
 
     ### Mkdocs package
 
-    ``` bash
+    ```bash
     poetry run poetry add mkdocs
     ```
 
     ### Mkdocs project
 
-    ``` bash
+    ```bash
     mkdocs new . # creates mkdocs project in current directory
     ```
 
     ### Local dev server
 
-    ``` bash
+    ```bash
     mkdocs serve —dev-addr 0.0.0.0:8000 # (1)!
     ```
 
     1. Start the dev server locally on any address on port 8000.
-    This is useful for development from a different local network computer, where the default localhost won’t work
+        This is useful for development from a different local network computer, where the default localhost won’t work
 
     ### Material theme
 
-    ``` bash
+    ```bash
     poetry add mkdocs-material
     cat "theme: material" >> mkdocs.yml
     git ci -a -m"setup material theme for mkdocs"
     ```
 
     ### ~~Multirepo~~ (not yet working)
-    ``` bash
+
+    ```bash
     poetry add mkdocs-multirepo-plugin
     # add the plugin in mkdocs.yml
     # import the other repos in mkdocs.yml
@@ -257,7 +258,7 @@ Let's say we want to add the `mkdocs-multirepo-plugin`.
 
     We need to export the requirements whenever we add a new package, so that the docker setup and pip users can know to use it.
 
-    ``` bash
+    ```bash
     # (1)!
     poetry export -f requirements.txt > requirements.txt
     ```

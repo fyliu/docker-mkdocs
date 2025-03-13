@@ -8,13 +8,13 @@ We use the `.dockerignore` file for this. It marks project files to skip when bu
 
     1. Run a shell in the docker image
 
-        ``` bash
+        ```bash
         docker run -it image_name sh
         ```
 
     1. Look at the directory structure
 
-        ``` bash
+        ```bash
         ls
         ```
 
@@ -28,16 +28,17 @@ This helps speed up subsequent docker builds by caching intermediate files and r
 
 Put this flag between `RUN` and the command
 
-``` docker hl_lines="2"
+```docker hl_lines="2"
 RUN \
 --mount=type=cache,target=/root/.cache
   pip install -r requirements.txt
 ```
 
-For pip, the files are by default stored in `/root/.cache/pip`.  [Pip caching docs](https://pip.pypa.io/en/stable/topics/caching/)
+For pip, the files are by default stored in `/root/.cache/pip`. [Pip caching docs](https://pip.pypa.io/en/stable/topics/caching/)
 For apk, the cache directory is `/var/cache/apk/`. [APK wiki on local cache](https://wiki.alpinelinux.org/wiki/Local_APK_cache)
 
 ??? info "References"
+
     - [buildkit mount the cache](https://vsupalov.com/buildkit-cache-mount-dockerfile/)
     - [proper usage of mount cache](https://dev.doroshev.com/blog/docker-mount-type-cache/)
     - [mount cache reference](https://docs.docker.com/engine/reference/builder/#run---mounttypecache)
@@ -48,7 +49,7 @@ There are methods to do this on many levels. All of these methods contribute to 
 
 !!! Note "`mkdocs-material` `babel` dependency
 
-    `mkdocs-material` theme added `babel` as a dependency starting at version 9.2. As a result, the docker image size increased from <30MB to around 40MB. This is unavoidable.
+    `mkdocs-material` theme added `babel` as a dependency starting at version 9.2. As a result, the docker image size increased from \<30MB to around 40MB. This is unavoidable.
 
 ### Docker
 
@@ -66,7 +67,7 @@ There are methods to do this on many levels. All of these methods contribute to 
 
         Set this environment variable
 
-        ``` docker
+        ```docker
         ENV PYTHONDONTWRITEBYTECODE 1
         ```
 
@@ -74,7 +75,7 @@ There are methods to do this on many levels. All of these methods contribute to 
 
         Set the `-B` flag for python
 
-        ``` docker
+        ```docker
         RUN python3 -B -m pip install -r requirements.txt
         ```
 
@@ -88,7 +89,7 @@ There are methods to do this on many levels. All of these methods contribute to 
 
             Set this environment variable to make python store all pycache bytecode files under some directory
 
-            ``` docker
+            ```docker
             ENV PYTHONPYCACHEPREFIX=/root/.cache/pycache/
             ```
 
@@ -96,13 +97,13 @@ There are methods to do this on many levels. All of these methods contribute to 
 
             Use the commandline flag for python
 
-            ``` docker
+            ```docker
             RUN python3 -X pycache_prefix=/root/.cache/pycache/ -m pip install -r requirements.txt
             ```
 
     1. Remove the files in the same RUN command by appending this to the end
 
-        ``` bash
+        ```bash
         && rm -rf /root/.cache/pycache/
         ```
 
@@ -112,7 +113,7 @@ There are methods to do this on many levels. All of these methods contribute to 
 
     Pass the flag into pip to skip generating `pyc` files during install
 
-    ``` docker
+    ```docker
     RUN pip install --no-compile -r requirements.txt
     ```
 
@@ -124,7 +125,7 @@ There are methods to do this on many levels. All of these methods contribute to 
 
         Set this environment variable
 
-        ``` bash
+        ```bash
         ENV PIP_NO_CACHE_DIR=1
         ```
 
@@ -132,7 +133,7 @@ There are methods to do this on many levels. All of these methods contribute to 
 
         Pass this flag into pip
 
-        ``` bash
+        ```bash
         RUN pip install --no-cache-dir -r requirements.txt
         ```
 
@@ -142,12 +143,12 @@ Combineable flags can be passed into a docker or docker-compose build to force a
 
 1. Try to download the latest base image
 
-    ``` bash
+    ```bash
     docker-compose build --pull
     ```
 
 1. Disable caching. Build everything
 
-    ``` bash
+    ```bash
     docker-compose build --no-cache
     ```

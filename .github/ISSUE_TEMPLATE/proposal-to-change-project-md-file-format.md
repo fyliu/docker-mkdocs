@@ -26,7 +26,7 @@ Describe the purpose for the proposal change
 
 - [ ] Update Template project.md wiki page
 
-- [ ] Submit pull request - indicating Issue #294 is affected (format changes log), and the text "fixes Issue #\[number that you are creating now\]
+- [ ] Submit pull request - indicating Issue #294 is affected (format changes log), and the text "fixes Issue #[number that you are creating now]
 
 ### Resources
 

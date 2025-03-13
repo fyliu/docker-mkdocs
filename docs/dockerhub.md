@@ -5,6 +5,7 @@ Docker Hub is a container registry hosted by Docker. It is the default whenever 
 ## getting started
 
 ??? note "References"
+
     ```
     https://docs.docker.com/docker-hub/quickstart/
     https://www.linux.com/training-tutorials/how-use-dockerhub/
@@ -13,6 +14,7 @@ Docker Hub is a container registry hosted by Docker. It is the default whenever 
     [todo: connect a repository to a package](https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package)
 
 ??? note "old notes"
+
     I created a repo in my account called local-mkdocs
     The follow commands logs into dockerhub, tags the local image as testing, and pushes it to dockerhub
 
@@ -64,6 +66,7 @@ We need write access to be able to push images, but not the ability to delete th
 ## Create workflow
 
 ??? note "References"
+
     https://github.com/docker/login-action
 
 1. Create action secrets in github so that different forks can configure and push to their own dockerhub accounts
