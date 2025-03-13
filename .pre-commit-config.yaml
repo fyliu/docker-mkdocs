@@ -6,43 +6,64 @@ default_language_version:
     python: python3.12
 minimum_pre_commit_version: "2.18"
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
+-   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
       # identify invalid files
-      - id: check-yaml
+    -   id: check-yaml
         args: [--unsafe]
-      - id: check-toml
-      - id: check-executables-have-shebangs
-      - id: check-shebang-scripts-are-executable
+    -   id: check-toml
+    -   id: check-executables-have-shebangs
+    -   id: check-shebang-scripts-are-executable
 
       # git checks
-      - id: check-merge-conflict
-      - id: check-added-large-files
-      - id: detect-private-key
-      - id: check-case-conflict
-      # - id: detect-aws-credentials
+    -   id: check-merge-conflict
+    -   id: check-added-large-files
+    -   id: detect-private-key
+    -   id: check-case-conflict
 
       # general quality checks
-      - id: mixed-line-ending
-      - id: trailing-whitespace
+    -   id: mixed-line-ending
+    -   id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
-      - id: check-executables-have-shebangs
-      - id: end-of-file-fixer
+    -   id: check-executables-have-shebangs
+    -   id: end-of-file-fixer
 
-  - repo: https://github.com/AleksaC/hadolint-py
-    rev: v2.12.1b3
+-   repo: https://github.com/AleksaC/hadolint-py
+    rev: v2.12.0.3
     hooks:
-      - id: hadolint
+    -   id: hadolint
 
-  - repo: https://github.com/shellcheck-py/shellcheck-py
+-   repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.10.0.1
     hooks:
-      - id: shellcheck
+    -   id: shellcheck
 
-  - repo: local
+-   repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
+    rev: v0.6.1
     hooks:
-      - id: test
+    -   id: pre-commit-update
+
+-   repo: https://github.com/python-poetry/poetry
+    rev: 2.1.1
+    hooks:
+    -   id: poetry-check
+    -   id: poetry-lock
+
+
+-   repo: https://github.com/python-poetry/poetry-plugin-export
+    rev: 1.9.0
+    hooks:
+    -   id: poetry-export
+
+-   repo: https://github.com/mxr/sync-pre-commit-deps
+    rev: v0.0.3
+    hooks:
+    -   id: sync-pre-commit-deps
+
+-   repo: local
+    hooks:
+    -   id: test
         name: test
         entry: ./scripts/validate_mkdocs.sh
         language: system
