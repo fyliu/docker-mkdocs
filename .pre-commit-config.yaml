@@ -3,7 +3,7 @@
 default_install_hook_types: [pre-commit, pre-push]
 default_stages: [pre-commit, pre-push]
 default_language_version:
-    python: python3.12
+  python: python3.12
 minimum_pre_commit_version: "2.18"
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
@@ -38,6 +38,13 @@ repos:
     rev: v0.10.0.1
     hooks:
     -   id: shellcheck
+
+-   repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.22
+    hooks:
+    -   id: mdformat
+        additional_dependencies:
+        -   mdformat-mkdocs[recommended]>=4.1.2
 
 -   repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
     rev: v0.6.1
