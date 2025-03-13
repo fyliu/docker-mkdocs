@@ -12,7 +12,7 @@ Links to cross-origin destinations are unsafe both from a security and performan
 
 ### Action Item
 
-Run [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and then follow the instructions in \[cross-origin destinations are unsafe\]
+Run [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and then follow the instructions in [cross-origin destinations are unsafe]
 (https://developers.google.com/web/tools/lighthouse/audits/noopener) .
 
 ## Summary of instructions

@@ -16,7 +16,7 @@ We need to have a checklist of items to do when a product manager onboard and of
 
 ### Action Items
 
-- [ ] Check to see if the org template for this process has new steps in it, and if it does, update this  issue and its template with content and add the last date you updated the template below
+- [ ] Check to see if the org template for this process has new steps in it, and if it does, update this issue and its template with content and add the last date you updated the template below
 - [ ] Copy template to comment below
 - [ ] Add name of person
 - [ ] Check off as done
@@ -105,19 +105,19 @@ We need to have a checklist of items to do when a product manager onboard and of
 - [REPLACE with Team Roster]
 - Check public and 2FA at [people page](https://github.com/orgs/hackforla/people)
 - [REPLACE with GitHub Team URL]
-   - [base (read)]
-   - [write]
-   - [maintain]
-   - [triage]
-   - [admin]
-   - [other]
-- WIKI team page: https://github.com/hackforla/[Replace with name of your project]/wiki/The-Team
+  - [base (read)]
+  - [write]
+  - [maintain]
+  - [triage]
+  - [admin]
+  - [other]
+- WIKI team page: https://github.com/hackforla/[Replace with name of your project\]/wiki/The-Team
 - [Replace with name of your project Figma]
-- Shortcut for adding a profile to the desktop:  chrome://settings/manageProfile
+- Shortcut for adding a profile to the desktop: chrome://settings/manageProfile
 - Tutorials
-    - [Forward emails to team members](https://github.com/hackforla/product-management/wiki/Forward-emails-to-team-members)
+  - [Forward emails to team members](https://github.com/hackforla/product-management/wiki/Forward-emails-to-team-members)
 
----
+______________________________________________________________________
 
 [org template](https://raw.githubusercontent.com/hackforla/.github/main/.github/ISSUE_TEMPLATE/onboard---offboard--product.md) updated 2022-02-23
 [Changelog](https://github.com/hackforla/product-management/wiki/Onboard-Offboard-Changelog)

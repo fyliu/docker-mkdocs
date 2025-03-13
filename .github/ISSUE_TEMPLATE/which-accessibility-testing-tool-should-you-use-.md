@@ -11,7 +11,7 @@ assignees: ''
 
 ### Overview
 
-There are more than 100 accessibility testing tools.  Figuring out which ones to use can be a black hole.  For guidance we recommend this article:  [Which accessibility testing tool should you use?](https://medium.com/pulsar/which-accessibility-testing-tool-should-you-use-e5990e6ef0a)
+There are more than 100 accessibility testing tools. Figuring out which ones to use can be a black hole. For guidance we recommend this article: [Which accessibility testing tool should you use?](https://medium.com/pulsar/which-accessibility-testing-tool-should-you-use-e5990e6ef0a)
 
 ### Summary of Article
 

@@ -11,7 +11,7 @@ assignees: ''
 
 ### Overview
 
-In order for your sites form(s) to be usable by visitors using screen readers all the form <input> elements need labels.  There are specific details and exceptions, which can be found in the instructions below.
+In order for your sites form(s) to be usable by visitors using screen readers all the form <input> elements need labels. There are specific details and exceptions, which can be found in the instructions below.
 
 ### Action Items
 

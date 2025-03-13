@@ -13,17 +13,17 @@ Please write a user story for this feature suggestion in the following format: A
 ### Action Items
 
 - [ ] Define your Feature Suggestion
-    - [ ] What is the feature you are suggesting?
-    - [ ] Is this feature urgent
-        - [ ] if so why?
-    - [ ] How long do you expect it take to implement this issue?
-    - [ ] Who is needed to implement this feature (Could you implement it yourself?)
-        - [ ] Design
-        - [ ] Front End
-        - [ ] Back End
-        - [ ] Database
-    - [ ] What problem does this feature solve?
-    - [ ] What technologies are needed for this feature?
+  - [ ] What is the feature you are suggesting?
+  - [ ] Is this feature urgent
+    - [ ] if so why?
+  - [ ] How long do you expect it take to implement this issue?
+  - [ ] Who is needed to implement this feature (Could you implement it yourself?)
+    - [ ] Design
+    - [ ] Front End
+    - [ ] Back End
+    - [ ] Database
+  - [ ] What problem does this feature solve?
+  - [ ] What technologies are needed for this feature?
 
 ### Resources/Instructions
 

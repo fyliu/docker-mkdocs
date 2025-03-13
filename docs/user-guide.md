@@ -36,7 +36,7 @@ It comes with tools to help create documentation that's pleasing to read and eas
 
     ??? example "Code and text annotations"
 
-        ``` bash
+        ```bash
         Click the plus sign --> # (1)!
         ```
 
@@ -78,7 +78,7 @@ We want to make it very easy for Hack for LA projects to maintain documentation.
         #   dockerfile: Dockerfile
         command: mkdocs serve -a "0.0.0.0:8000" # (2)!
         ports:
-          - "8005:8000" # (3)!
+          - 8005:8000   # (3)!
         volumes:
           - .:/app # (4)!
     ```
@@ -108,9 +108,9 @@ Copy the relevant files to your `.github/workflows/` directory and adapt them to
 
     Use the docker image to create the new project
 
-    ``` bash
+    ```bash
     docker-compose run mkdocs \
-    mkdocs new . # (1)!
+        mkdocs new . # (1)!
     ```
 
     1. docker-compose run executes a command from a new docker image container. In this case, inside the mkdocs container, execute `mkdocs new .` (note the period for the current directory).
@@ -149,6 +149,30 @@ This will make sure the MkDocs site will work correctly. Do this before checking
     ```
 
 1. Fix any problems.
+
+#### Markdown auto-formatter
+
+The formatter is part of the pre-commit system. It formats `.github/ISSUE_TEMPLATE/**/*.md` files using GitHub-Flavored Markdown, and `docs/**/*.md` files using MkDocs Markdown.
+
+1. Make sure pre-commit is installed.
+
+    ```bash
+    pip install pre-commit
+    ```
+
+1. Make sure pre-commit hooks are installed.
+
+    ```bash
+    pre-commit install
+    ```
+
+1. Run this to format all files:
+
+    ```bash
+    pre-commit run mdformat --all-files
+    ```
+
+1. Add any formatting changes and commit to git.
 
 ### Extend the image
 
@@ -246,29 +270,29 @@ Now that we have poetry, we can use it to add the plugin.
 
 1. Add the new plugin
 
-    ``` bash
+    ```bash
     # (1)!
     docker-compose run mkdocs \
-    poetry add mkdocs-awesome-pages-plugin --group docs # (2)!
+        poetry add mkdocs-awesome-pages-plugin --group docs # (2)!
     ```
 
     1. This docker-compose command runs the second line inside the docker container
-    2. Add (install) mkdocs-awesome-pages to pyproject.toml under the docs group. This is in case your project also uses poetry and need to separate the docs dependencies from the rest.
+    1. Add (install) mkdocs-awesome-pages to pyproject.toml under the docs group. This is in case your project also uses poetry and need to separate the docs dependencies from the rest.
 
 #### Build the image
 
 1. Export the requirements.txt
 
-    ``` bash
+    ```bash
     docker-compose run mkdocs \
-    poetry export -f requirements.txt --without-hashes --with docs > requirements.txt # (1)!
+        poetry export -f requirements.txt --without-hashes --with docs > requirements.txt # (1)!
     ```
 
     1. Export dependencies, including the docs group, in requirements.txt format, to requirements.txt.
 
 1. Build and run the docker image with the new plugin
 
-    ``` bash
+    ```bash
     docker-compose up --build
     ```
 

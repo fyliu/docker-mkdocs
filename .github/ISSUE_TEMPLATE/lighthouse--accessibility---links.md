@@ -8,7 +8,7 @@ assignees: ''
 
 ### Overview
 
-The formatting of links can make them readable or unreadable by screen readers.  Which includes creating programmatic events for links without making them device specific (e.g., onfocus() instead of onmouseover(), etc.), and other ways of making sure all links are visible by screen readers.
+The formatting of links can make them readable or unreadable by screen readers. Which includes creating programmatic events for links without making them device specific (e.g., onfocus() instead of onmouseover(), etc.), and other ways of making sure all links are visible by screen readers.
 
 ### Action Items
 
