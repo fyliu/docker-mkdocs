@@ -2,16 +2,16 @@
 # we need at least syntax version 1.3 for the cache mount. 1 will use the latest 1.x version syntax
 
 # pull official base image
-FROM python:3.11-alpine3.18
+FROM python:3.13-alpine
 
 # set work directory
 WORKDIR /app
 
 # set environment variables
 ENV PYTHONUNBUFFERED=1 \
-    PYTHONPYCACHEPREFIX=/root/.cache/pycache/ \
-    PIP_DISABLE_PIP_VERISON_CHECK=ON \
-    PIP_DEFAULT_TIMEOUT=100
+  PYTHONPYCACHEPREFIX=/root/.cache/pycache/ \
+  PIP_DISABLE_PIP_VERISON_CHECK=ON \
+  PIP_DEFAULT_TIMEOUT=100
 
 # install system dependencies
 #RUN \
