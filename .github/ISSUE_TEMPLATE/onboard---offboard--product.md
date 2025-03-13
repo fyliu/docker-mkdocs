@@ -48,7 +48,7 @@ We need to have a checklist of items to do when a product manager onboard and of
 - [ ] Figma
   - [ ] invite
   - [ ] acceptance
-- [ ] 1password 
+- [ ] 1password
      - [ ] invitation
      - [ ] acceptance
      - [ ] add to vaults
@@ -60,7 +60,7 @@ We need to have a checklist of items to do when a product manager onboard and of
    - [ ] [REPLACE with name of secondary email]
 - [ ] Social Media Accounts with role assignment
    - [ ] Facebook
-- [ ] Train how to 
+- [ ] Train how to
    - [ ] login to team account
    - [ ] setup chrome shortcut for adding to desktop
    - [ ] use zoom spreadsheet, vault and accounts

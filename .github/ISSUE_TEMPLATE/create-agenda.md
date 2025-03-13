@@ -25,11 +25,11 @@ This issue tracks the agenda for our weekly meetings
        - [ ] [Name of Person]
 - [ ] finish adding labels to the issue that are still missing them (see audit links above)
 - [ ] review issues with [epic label] and define how to break down further
-- [ ] Review to see if there are any members to Onboard or Offboard 
+- [ ] Review to see if there are any members to Onboard or Offboard
       - [ ]  #
 
 ### New Items
-- [ ] 
+- [ ]
 - [ ] Carry over Items to next meeting that don't get addressed
 
 ### FYIs
