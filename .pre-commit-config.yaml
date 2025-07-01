@@ -47,12 +47,12 @@ repos:
         -   mdformat-mkdocs[recommended]>=4.1.2
 
 -   repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
-    rev: v0.6.1
+    rev: v0.8.0
     hooks:
     -   id: pre-commit-update
 
 -   repo: https://github.com/python-poetry/poetry
-    rev: 2.1.1
+    rev: 2.1.3
     hooks:
     -   id: poetry-check
     -   id: poetry-lock
