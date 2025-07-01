@@ -4,9 +4,10 @@ on:
   push:
     branches: main
     paths:
-      - 'Dockerfile'
-      - 'requirements.txt'
-      - '.dockerignore'
+      - "Dockerfile"
+      - "requirements.txt"
+      - ".dockerignore"
+      - ".github/workflows/build-image.yml"
 
 jobs:
   push_to_registry:
@@ -23,10 +24,18 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
+      - name: Extract MkDocs version
+        id: mkdocs_version
+        run: |
+          mkdocs_version=$(grep -oP 'mkdocs==\K[0-9.]+\b' requirements.txt)
+          mkdocs_material_version=$(grep -oP 'mkdocs-material==\K[0-9.]+\b' requirements.txt)
+          echo "full_version=${mkdocs_version}-mkdocs-material-${mkdocs_material_version}" >> $GITHUB_OUTPUT
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/mkdocs:latest
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/mkdocs:${{ steps.mkdocs_version.outputs.full_version }}
