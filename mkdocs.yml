@@ -21,6 +21,7 @@ theme:
     - navigation.expand
     - navigation.indexes
     - navigation.instant
+    - navigation.path
     - navigation.sections
     - navigation.tracking
     - search.highlight
