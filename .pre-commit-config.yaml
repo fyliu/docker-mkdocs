@@ -46,7 +46,7 @@ repos:
         name: mdformat-mkdocs
         exclude: ^.github/ISSUE_TEMPLATE/
         additional_dependencies:
-        -   mdformat-mkdocs[recommended]>=4.1.2
+        -   mdformat-mkdocs[recommended]>=4.4.2
 
 -   repo: https://github.com/executablebooks/mdformat
     rev: 0.7.22
@@ -63,6 +63,7 @@ repos:
     rev: v0.9.0
     hooks:
     -   id: pre-commit-update
+        args: [--keep, mdformat]
 
 -   repo: https://github.com/python-poetry/poetry
     rev: 2.2.1
